@@ -20,7 +20,7 @@ namespace CRMBulkDeletion
             Incident myCase = null;
             int pageNo = 1;
             int record = 0;           
-            string casTickNum = "CAS-419030-H3B2T8";
+            string casTickNum = "";
             Guid  last = new Guid();
             Guid first = new Guid();
         start:
