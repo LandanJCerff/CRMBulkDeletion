@@ -43,15 +43,7 @@ namespace CRMBulkDeletion
             {
                 return null;
             }
-            /* < filter type = 'and' >
- 
-                 < condition attribute = 'ticketnumber' value = '" + casTickNum + @"' operator= 'eq' />
-  
-                  </ filter >
-                  
-              <cookie page='" + pageNo + @"' incidentid last='{" + last + @"}' first='{" + first + @"}'/></cookie>   
-             */
-        }
+         }
 
 
         public class CaseStorage
