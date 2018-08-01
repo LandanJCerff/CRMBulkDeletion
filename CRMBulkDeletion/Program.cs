@@ -19,12 +19,12 @@ namespace CRMBulkDeletion
             try
             {
                 ClientCredentials clientCredentials = new ClientCredentials();
-                clientCredentials.UserName.UserName = "landan.cerff@shgroup.org.uk";
-                clientCredentials.UserName.Password = "Ep1c.tul1p1";
+                clientCredentials.UserName.UserName = "";
+                clientCredentials.UserName.Password = "";
 
                 Console.WriteLine("credentials set");
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                _orgServ = (IOrganizationService)new OrganizationServiceProxy(new Uri("https://shgl-sandbox1.api.crm4.dynamics.com/XRMServices/2011/Organization.svc"),
+                _orgServ = (IOrganizationService)new OrganizationServiceProxy(new Uri("https:/.....api.crm4.dynamics.com/XRMServices/2011/Organization.svc"),
                     null, clientCredentials, null);
 
                
