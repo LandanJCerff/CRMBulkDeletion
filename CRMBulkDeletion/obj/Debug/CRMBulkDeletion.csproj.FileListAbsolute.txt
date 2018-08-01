@@ -1,0 +1,9 @@
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\obj\Debug\CRMBulkDeletion.csprojResolveAssemblyReference.cache
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\CRMBulkDeletion.exe.config
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\CRMBulkDeletion.exe
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\CRMBulkDeletion.pdb
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\Microsoft.Crm.Sdk.Proxy.dll
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\Microsoft.IdentityModel.dll
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\bin\Debug\Microsoft.Xrm.Sdk.dll
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\obj\Debug\CRMBulkDeletion.exe
+C:\Visual Studio 2015\Projects\CRMBulkDeletion\CRMBulkDeletion\obj\Debug\CRMBulkDeletion.pdb
