@@ -1,4 +1,4 @@
-﻿using Microsoft.Crm.Sdk.Messages;
+using Microsoft.Crm.Sdk.Messages;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
 using Microsoft.Xrm.Sdk.Query;
@@ -70,7 +70,6 @@ namespace CRMBulkDeletion
             }         
         }
 
-
         public void CaseSaveList(Guid casId, string casType)
         {
             //safe list for holding records which meet criteria
@@ -98,7 +97,7 @@ namespace CRMBulkDeletion
         {
             OrganizationServiceContext _orgContext = new OrganizationServiceContext(_orgServ);
             
-            ConditionExpression conEx = new ConditionExpression("regardingobjectid", ConditionOperator.DoesNotContainValues);
+            ConditionExpression conEx = new ConditionExpression("regardingobjectid", ConditionOperator.Null);
             FilterExpression fiEx = new FilterExpression();
             fiEx.AddCondition(conEx);
             BulkDeleteRequest request = new BulkDeleteRequest
@@ -112,16 +111,14 @@ namespace CRMBulkDeletion
             new QueryExpression { EntityName = "activitypointer", Criteria = fiEx}            
         }
             };
-
-            BulkDeleteResponse response = (BulkDeleteResponse)_orgServ.Execute(request);
-            
+            BulkDeleteResponse response = (BulkDeleteResponse)_orgServ.Execute(request);            
     }
 
         public void BulkCaseDeletion(IOrganizationService _orgServ)
         {
             OrganizationServiceContext _orgContext = new OrganizationServiceContext(_orgServ);
 
-            ConditionExpression conEx = new ConditionExpression("shg_CaseSaveField", ConditionOperator.Equal, false);
+            ConditionExpression conEx = new ConditionExpression("shg_casesavefield", ConditionOperator.NotEqual, true);
             FilterExpression fiEx = new FilterExpression();
             fiEx.AddCondition(conEx);
             BulkDeleteRequest request = new BulkDeleteRequest
@@ -135,7 +132,6 @@ namespace CRMBulkDeletion
             new QueryExpression { EntityName = "incident", Criteria = fiEx}
         }
             };
-
             BulkDeleteResponse response = (BulkDeleteResponse)_orgServ.Execute(request);
         }
     }
