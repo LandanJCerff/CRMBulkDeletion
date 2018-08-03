@@ -1981,7 +1981,7 @@ namespace CRMBulkDeletion
         /// <summary>
         /// Details whether the profile is safe or not.
         /// </summary>
-        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shg_CaseSaveField")]
+       /* [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shg_CaseSaveField")]
         public System.Nullable<bool> shg_CaseSaveField
         {
             get
@@ -1990,11 +1990,11 @@ namespace CRMBulkDeletion
             }
             set
             {
-                this.OnPropertyChanging("CaseSaveField");
-                this.SetAttributeValue("casesavefield", value);
-                this.OnPropertyChanged("CaseSaveField");
+                this.OnPropertyChanging("shg_CaseSaveField");
+                this.SetAttributeValue("shg_casesavefield", value);
+                this.OnPropertyChanged("shg_CaseSaveField");
             }
-        }
+        }*/
 
         /// <summary>
         /// Select how contact about the case was originated, such as email, phone, or web, for use in reporting and analysis.
@@ -2113,6 +2113,23 @@ namespace CRMBulkDeletion
                 this.OnPropertyChanging("ccrm_AdditionalComplainants");
                 this.SetAttributeValue("ccrm_additionalcomplainants", value);
                 this.OnPropertyChanged("ccrm_AdditionalComplainants");
+            }
+        }
+        /// <summary>
+        /// ////////////
+        /// </summary>
+        [Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shg_CaseSaveField")]
+        public System.Nullable<bool> shg_CaseSaveField
+        {
+            get
+            {
+                return this.GetAttributeValue<System.Nullable<bool>>("shg_CaseSaveField");
+            }
+            set
+            {
+                this.OnPropertyChanging("shg_CaseSaveField");
+                this.SetAttributeValue("shg_casesavefield", value);
+                this.OnPropertyChanged("shg_CaseSaveField");
             }
         }
 
