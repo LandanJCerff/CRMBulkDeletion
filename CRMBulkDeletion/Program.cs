@@ -13,7 +13,8 @@ namespace CRMBulkDeletion
         public static void Main(string[] args)
         {           
             IOrganizationService _orgServ = null;
-            string env = args[0];
+           // string env = args[0];
+            string env = "";
             try
             {
                 ClientCredentials clientCredentials = new ClientCredentials();
@@ -23,7 +24,7 @@ namespace CRMBulkDeletion
                  Console.WriteLine("credentials set");
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
                 _orgServ = (IOrganizationService)new OrganizationServiceProxy(
-                    new Uri("https://shgl-" + env + ".api.crm4.dynamics.com/XRMServices/2011/Organization.svc"),
+                    new Uri("https://" + env + ".api.crm4.dynamics.com/XRMServices/2011/Organization.svc"),
                     null, clientCredentials, null);
                               
                 Console.WriteLine("connection made");
