@@ -21,6 +21,7 @@ namespace CRMBulkDeletion
             int pageNo = 1;
             int record = 0;           
             string casTickNum = "";
+            string casType;
             Guid  last = new Guid();
             Guid first = new Guid();
         start:
@@ -35,7 +36,15 @@ namespace CRMBulkDeletion
                     Console.WriteLine("record number = " + record);
                     myCase = retrievedCases[r].ToEntity<Incident>();
                     var casId = myCase.IncidentId;
-                    string casType = myCase.gcs_CaseTypes.Name.ToString();                   
+
+                    if (myCase.gcs_CaseTypes == null)
+                    {
+                        _orgContext.Attach(myCase);
+                        _orgContext.DeleteObject(myCase);
+                        _orgContext.Dispose();
+                        continue;
+                    }
+                    casType = myCase.gcs_CaseTypes.Name.ToString();
 
                     CaseSaveList((Guid)casId, casType);
 
@@ -45,19 +54,34 @@ namespace CRMBulkDeletion
                     {
                         if (idExist >= 0)
                         {
-                            myCase.shg_CaseSaveField = true;
-                            _orgContext.Attach(myCase);
-                            _orgContext.UpdateObject(myCase);
-                            _orgContext.Dispose();                                                    
+                            Entity updateCase = new Entity();
+                            updateCase.LogicalName = myCase.LogicalName;
+                            updateCase.Attributes["shg_casesavefield"] = true;
+                            updateCase.Id = myCase.Id;
+                            if (myCase.StateCode != 0)
+                            {
+                                SetStateRequest setStateRequest = new SetStateRequest()
+                                {
+                                    EntityMoniker = new EntityReference
+                                    {
+                                        Id = myCase.Id,
+                                        LogicalName = myCase.LogicalName,
+                                    },
+                                    Status = new OptionSetValue(1),
+                                    State = new OptionSetValue(0)
+                                };
+                                _orgServ.Execute(setStateRequest);
+                            }
+                            _orgServ.Update(updateCase);
                             continue;
-                        }                       
+                        }
                     }
                     catch (FaultException<OrganizationServiceFault> e)
                     {
                         Console.WriteLine(e + "case which failed = " + myCase.TicketNumber + " case type = " + myCase.gcs_CaseTypes);
                         continue;
                     }
-                }
+                }                
                 pageNo++;
                 first = (Guid)retrievedCases.Entities.Select(s => s.Attributes["incidentid"]).First();                
                 last = (Guid)retrievedCases.Entities.Select(s => s.Attributes["incidentid"]).Last();
